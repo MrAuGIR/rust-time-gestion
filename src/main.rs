@@ -152,7 +152,6 @@ impl GestionTempsApp {
             // Ignorer les pauses déjeuner
             let description = parties[1];
             if description.to_lowercase().contains("pause déjeuner") {
-                println!("⏭️ Pause déjeuner ignorée: {}", description);
                 continue;
             }
             
@@ -214,7 +213,6 @@ impl GestionTempsApp {
                 duree.num_seconds() as f64 / 3600.0
             }
             _ => {
-                println!("Erreur de parsing des dates: {} -> {}", debut, fin);
                 0.0
             }
         }
@@ -224,8 +222,7 @@ impl GestionTempsApp {
         if let Some(ref resultat) = self.resultat {
             match self.creer_camembert(resultat) {
                 Ok(_) => {
-                    println!("Graphique généré avec succès !");
-                    // Ici vous pourriez afficher un message dans l'interface
+                    
                 }
                 Err(e) => {
                     println!("Erreur lors de la génération du graphique: {}", e);
@@ -290,7 +287,6 @@ impl GestionTempsApp {
         }
         
         root.present()?;
-        println!("Graphique sauvegardé sous 'camembert_temps_travail.png'");
         
         Ok(())
     }

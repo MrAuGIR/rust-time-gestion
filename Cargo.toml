@@ -2,12 +2,31 @@
 name = "gestion_temps"
 version = "0.1.0"
 edition = "2021"
+authors = ["Votre Nom <votre.email@example.com>"]
+description = "Application de gestion du temps de travail"
+license = "MIT"
+homepage = "https://github.com/votre-username/gestion-temps"
+repository = "https://github.com/votre-username/gestion-temps"
 
 [dependencies]
 eframe = "0.24"
 egui = "0.24"
-chrono = { version = "0.4", features = ["serde"] }
+chrono = { version = "0.4", features = ["serde", "clock"] }
 plotters = "0.3"
+
+# Métadonnées Windows pour l'exécutable
+[package.metadata.winres]
+OriginalFilename = "gestion_temps.exe"
+FileDescription = "Gestion du Temps de Travail"
+ProductName = "Gestion Temps"
+CompanyName = "Votre Entreprise"
+LegalCopyright = "Copyright 2024 Votre Nom"
+FileVersion = "1.0.0.0"
+ProductVersion = "1.0.0.0"
+
+# Dépendance pour les ressources Windows
+[build-dependencies]
+winres = "0.1"
 
 # Pour Windows spécifiquement
 [target.'cfg(windows)'.dependencies]
