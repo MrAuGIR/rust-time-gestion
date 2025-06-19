@@ -1,0 +1,29 @@
+[package]
+name = "gestion_temps"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+eframe = "0.24"
+egui = "0.24"
+chrono = { version = "0.4", features = ["serde"] }
+plotters = "0.3"
+
+# Pour Windows spécifiquement
+[target.'cfg(windows)'.dependencies]
+winapi = { version = "0.3", features = ["winuser"] }
+
+# Configuration pour la compilation release
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+
+# Configuration pour créer un exécutable Windows sans console
+[[bin]]
+name = "gestion_temps"
+path = "src/main.rs"
+
+[profile.release.package."*"]
+opt-level = 3
