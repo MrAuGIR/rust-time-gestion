@@ -49,10 +49,10 @@ mod tests {
     fn test_format_duree_en_heures() {
         let app = create_test_app();
         
-        assert_eq!(app.format_duree_en_heures(2.5), "02h30");
-        assert_eq!(app.format_duree_en_heures(1.25), "01h15");
-        assert_eq!(app.format_duree_en_heures(0.0), "00h00");
-        assert_eq!(app.format_duree_en_heures(8.75), "08h45");
+        assert_eq!(app.format_duree_en_heures(&2.5), "02h30");
+        assert_eq!(app.format_duree_en_heures(&1.25), "01h15");
+        assert_eq!(app.format_duree_en_heures(&0.0), "00h00");
+        assert_eq!(app.format_duree_en_heures(&8.75), "08h45");
     }
 
     #[test]
