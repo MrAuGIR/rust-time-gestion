@@ -128,7 +128,7 @@ impl eframe::App for GestionTempsApp {
                             ui.heading("Temps de travail par jour :");
 
                             for (date, &total) in &self.temps_par_jour {
-                                ui.label(format!("Date: {} - Temps total: {} heures ( {:.2}h )", date, self.format_duree_en_heures(total), total));
+                                ui.label(format!("Date: {} - Temps total: {} ( {:.2}h )", date, self.format_duree_en_heures(total), total));
                             }
                         }
                 });
