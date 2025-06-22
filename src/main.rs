@@ -3,11 +3,17 @@ use gestion_temps::GestionTempsApp;
 
 
 fn main() -> Result<(), eframe::Error> {
+
     let options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
             .with_inner_size([1000.0, 800.0])
             .with_title("Gestion du Temps de Travail")
-            .with_resizable(true),
+            .with_resizable(true)
+            .with_icon(
+                // NOE: Adding an icon is optional
+                eframe::icon_data::from_png_bytes(&include_bytes!("../assets/sablier.png")[..])
+                    .unwrap(),
+            ),
         ..Default::default()
     };
     
@@ -49,10 +55,10 @@ mod tests {
     fn test_format_duree_en_heures() {
         let app = create_test_app();
         
-        assert_eq!(app.format_duree_en_heures(2.5), "02h30");
-        assert_eq!(app.format_duree_en_heures(1.25), "01h15");
-        assert_eq!(app.format_duree_en_heures(0.0), "00h00");
-        assert_eq!(app.format_duree_en_heures(8.75), "08h45");
+        assert_eq!(app.format_duree_en_heures(&2.5), "02h30");
+        assert_eq!(app.format_duree_en_heures(&1.25), "01h15");
+        assert_eq!(app.format_duree_en_heures(&0.0), "00h00");
+        assert_eq!(app.format_duree_en_heures(&8.75), "08h45");
     }
 
     #[test]
