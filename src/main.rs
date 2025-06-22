@@ -3,11 +3,17 @@ use gestion_temps::GestionTempsApp;
 
 
 fn main() -> Result<(), eframe::Error> {
+
     let options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
             .with_inner_size([1000.0, 800.0])
             .with_title("Gestion du Temps de Travail")
-            .with_resizable(true),
+            .with_resizable(true)
+            .with_icon(
+                // NOE: Adding an icon is optional
+                eframe::icon_data::from_png_bytes(&include_bytes!("../assets/sablier.png")[..])
+                    .unwrap(),
+            ),
         ..Default::default()
     };
     
