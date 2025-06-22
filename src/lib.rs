@@ -3,6 +3,7 @@ use eframe::App;
 use plotters::prelude::*;
 use std::collections::HashMap;
 use chrono::{NaiveDateTime,NaiveDate};
+use std::collections::BTreeMap;
 
 #[derive(Default)]
 pub struct GestionTempsApp {
@@ -128,8 +129,15 @@ impl App for GestionTempsApp {
                             ui.separator();
                             ui.heading("Temps de travail par jour :");
 
-                            for (date, &total) in &self.temps_par_jour {
-                                ui.label(format!("Date: {} - Temps total: {} ( {:.2}h )", date, self.format_duree_en_heures(total), total));
+                            let trie_par_date: BTreeMap<_, _> = self.temps_par_jour.iter().collect();
+
+                            for (date, &total) in &trie_par_date {
+                                ui.label(format!(
+                                    "Date: {} - Temps total: {} ( {:.2}h )",
+                                    date,
+                                    self.format_duree_en_heures(total),
+                                    total
+                                ));
                             }
                         }
                 });
@@ -304,13 +312,13 @@ impl GestionTempsApp {
         }
     }
 
-    pub fn format_duree_en_heures(&self,duree_heures: f64) -> String {
+    pub fn format_duree_en_heures(&self,duree_heures: &f64) -> String {
         let heures = duree_heures.floor() as u32;
         let minutes = ((duree_heures - heures as f64) * 60.0).floor() as u32;
         let _secondes = ((((duree_heures - heures as f64) * 60.0) - minutes as f64) * 60.0).round() as u32;
 
        // format!("{:02}h{:02}m{:02}s", heures, minutes, secondes)
-        format!("{:02}h{:02}", heures, minutes)
+        format!("{:02}h{:02}m", heures, minutes)
     }
     
     pub fn generer_graphique(&self) {
