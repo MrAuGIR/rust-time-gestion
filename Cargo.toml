@@ -43,6 +43,7 @@ panic = "abort"
 [[bin]]
 name = "gestion_temps"
 path = "src/main.rs"
+windows_subsystem = "windows"
 
 [profile.release.package."*"]
 opt-level = 3

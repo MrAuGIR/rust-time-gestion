@@ -1,0 +1,6 @@
+Résultats attendus :
+
+Hors clientèle : 7,0 heures (2,5 + 1,5 + 3,0)
+Travail clientèle : 7,25 heures (3,25 + 4,0)
+Déplacement : 1,75 heures (0,75 + 1,0)
+Total : 15,0 heures
